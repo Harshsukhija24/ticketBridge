@@ -1,0 +1,49 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pyo
+*.pyd
+
+# Django
+*.log
+*.pot
+*.py[cod]
+db.sqlite3
+media/
+staticfiles/
+.env
+*.env
+
+# Virtual Environment
+venv/
+.env/
+env/
+.venv/
+.env/
+venv/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.DS_Store
+
+# Misc
+*.bak
+*.tmp
+*.swp
+*.swo
+*.DS_Store
+
+# macOS
+*.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
