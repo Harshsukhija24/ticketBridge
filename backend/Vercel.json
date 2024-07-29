@@ -2,18 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "manage.py",
+      "src": "backend/ticketbridge/ticketbridge/wsgi.py", // Adjust to your WSGI entry point
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "50mb",
-        "runtime": "python3.8"
+        "runtime": "python3.8" // Ensure this matches your project's Python version
       }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "manage.py"
+      "dest": "backend/ticketbridge/ticketbridge/wsgi.py" // This should be consistent with the builds section
     }
   ]
 }

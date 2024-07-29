@@ -1,51 +1,46 @@
-// SessionData.js
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-const SessionData = () => {
-  const [sessionData, setSessionData] = useState("");
-  const [error, setError] = useState("");
+const LogoutButton = () => {
+  const handleLogout = async () => {
+    try {
+      const accessToken = localStorage.getItem("access_token");
 
-  useEffect(() => {
-    const fetchSessionData = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:8000/Ticket/auth/session-data/",
-          {
-            method: "GET",
-            credentials: "include", // Include session cookies
-          }
-        );
+      const response = await fetch("http://localhost:8000/Ticket/logout/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
 
-        console.log("Response Status:", response.status); // Log the response status
-        console.log("Response Headers:", response.headers); // Log response headers
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Logout error:", errorData);
 
-        if (!response.ok) {
-          // Handle non-2xx responses
-          const errorText = await response.text();
-          console.log("Error Response:", errorText);
-          setError(`Failed to fetch session data: ${response.statusText}`);
+        // Check if the error is due to an invalid token
+        if (errorData.detail === "Given token not valid for any token type") {
+          alert("Your session has expired. Please log in again.");
+          // Redirect to the login page or perform any other necessary actions
+          window.location.href = "/login";
           return;
         }
 
-        const data = await response.json();
-        console.log("Response Data:", data); // Log the data received from the response
-
-        setSessionData(data.some_data);
-      } catch (error) {
-        console.error("Fetch Error:", error); // Log the error object
-        setError("Error fetching session data");
+        alert(`Logout failed: ${errorData.detail}`);
+        return;
       }
-    };
 
-    fetchSessionData();
-  }, []); // Empty dependency array to run only once
+      // If logout is successful, remove the access token
+      localStorage.removeItem("access_token");
 
-  return (
-    <div>
-      <h2>Session Data</h2>
-      {error ? <p>{error}</p> : <p>{sessionData}</p>}
-    </div>
-  );
+      // Redirect to the login page or perform any other necessary actions
+      window.location.href = "/login";
+    } catch (error) {
+      console.error("Logout error:", error);
+      alert("An error occurred while logging out.");
+    }
+  };
+
+  return <button onClick={handleLogout}>Logout</button>;
 };
 
-export default SessionData;
+export default LogoutButton;

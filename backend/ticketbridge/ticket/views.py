@@ -11,6 +11,11 @@ from .models import Event, Support, Request
 from .serielizers import EventSerializer, UserRegisterSerializer, UserLoginSerializer, SupportSerailizer, RequestSerailizer
 from .Filter import EventFilter
 from django.contrib.auth.models import User
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
+
 
 import logging
 
@@ -78,3 +83,13 @@ def login_view(request):
 def session_data_view(request):
     some_data = request.session.get('some_data', 'default_value')
     return JsonResponse({'some_data': some_data})
+
+
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        # Perform logout logic here
+        # For example, delete the user's session or token
+        request.user.auth_token.delete()
+        return Response({"detail": "Successfully logged out."}, status=status.HTTP_200_OK)

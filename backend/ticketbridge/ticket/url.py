@@ -8,10 +8,14 @@ router.register(r'Support',SupportViewset , basename='support')
 router.register(r'Request',RequestViewset,basename='Request')
 from . import views
 
+from .views import LogoutView
+
 
 urlpatterns = [
     path('login/', UserLoginView.as_view(), name='user-login'),
     path('', include(router.urls)), 
     path('session-data/', views.session_data_view, name='session_data'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+
 ]
  
