@@ -27,6 +27,6 @@ urlpatterns = [
 
     path('Ticket/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('Ticket/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('Ticket/auth/', include('ticket.url')),  # Custom routes for login and session data  # Custom login view
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Serve media files during development
+    path('Ticket/auth/', include('ticket.url')),  
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
  

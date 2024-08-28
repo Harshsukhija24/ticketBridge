@@ -63,7 +63,7 @@ const DetailPage = () => {
       <div className="container mx-auto py-8 px-4">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
           <img
-            src={data.imageUrl}
+            src={data.image}
             alt={data.title}
             className="w-full md:w-1/2 h-64 object-cover"
           />

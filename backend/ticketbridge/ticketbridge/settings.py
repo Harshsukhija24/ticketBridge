@@ -6,9 +6,23 @@ from datetime import timedelta
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
-SECRET_KEY = 'django-insecure-#zprxpp&b_5*-i!chqn*$)72=y$*8jrb^j+v@7d$o%c4*56-q0'
+#SECRET_KEY = 'django-insecure-#zprxpp&b_5*-i!chqn*$)72=y$*8jrb^j+v@7d$o%c4*56-q0'
 DEBUG = True
-ALLOWED_HOSTS = [] 
+# api/settings.py
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app','localhost','.now.sh']
+
+
+AWS_ACCESS_KEY_ID = 'your-access-key-id'
+AWS_SECRET_ACCESS_KEY = 'your-secret-access-key'
+AWS_STORAGE_BUCKET_NAME = 'your-bucket-name'
+AWS_S3_REGION_NAME = 'your-region'  # e.g., 'us-west-2'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_DEFAULT_ACL = None
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -114,6 +128,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'eventimage')
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),  # Directory for static files in development
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'

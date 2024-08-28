@@ -19,6 +19,7 @@ const Section4 = () => {
         }
         const result = await response.json();
         setData(result);
+        console.log(result);
       } catch (error) {
         console.error("Fetch error:", error.message);
         setError(error.message);
@@ -70,13 +71,9 @@ const Section4 = () => {
                   onClick={() => handleEventClick(event.id)}
                 >
                   <img
-                    src={`http://localhost:8000${event.image || ""}`} // Fix URL by adding a fallback for null or undefined
+                    src={event.image}
                     alt={event.Eventname}
                     className="w-full h-48 object-cover"
-                    onError={(e) => {
-                      console.error(`Error loading image: ${e.target.src}`);
-                      e.target.src = "https://via.placeholder.com/150"; // Placeholder image
-                    }}
                   />
                   <div className="p-4">
                     <h3 className="text-lg font-bold mb-2">

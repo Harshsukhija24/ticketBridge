@@ -2,18 +2,42 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/ticketbridge/ticketbridge/wsgi.py", // Adjust to your WSGI entry point
+      "src": "ticketbridge/wsgi.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "50mb",
-        "runtime": "python3.8" // Ensure this matches your project's Python version
+        "runtime": "python3.8"
+      }
+    },
+    {
+      "src": "build_files.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles_build"
       }
     }
   ],
   "routes": [
     {
+      "src": "/static/(.*)",
+      "dest": "/static/$1",
+      "headers": {
+        "cache-control": "max-age=3600"
+      }
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/ticketbridge/wsgi.py",
+      "headers": {
+        "cache-control": "no-cache"
+      }
+    },
+    {
       "src": "/(.*)",
-      "dest": "backend/ticketbridge/ticketbridge/wsgi.py" // This should be consistent with the builds section
+      "dest": "/index.html",
+      "headers": {
+        "cache-control": "max-age=3600"
+      }
     }
   ]
 }

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import Navbar from "../Components/NavBarHome";
 import Footer from "../Components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -73,7 +76,16 @@ const Register = () => {
             <h2 className="text-xl mt-2">Create Account</h2>
           </div>
           <form onSubmit={handleSubmit}>
-            <h3 className="mb-4">Already have an account? Login</h3>
+            <h3 className="mb-4">
+              Already have an account?
+              <button
+                onClick={() => navigate("/login")}
+                className="text-blue-500 underline ml-1"
+              >
+                Login
+              </button>
+            </h3>
+
             <div className="flex mb-4 space-x-4">
               <div className="flex-1">
                 <label className="block text-sm font-medium text-gray-700">

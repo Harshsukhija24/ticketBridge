@@ -33,7 +33,7 @@ const Login = () => {
       if (!response.ok) {
         const errorData = await response.json();
         console.error("Server error response:", errorData);
-        throw new Error(`Error: ${errorData.detail}`);
+        throw new Error(`Error: ${errorData.detail || "Unknown error"}`);
       }
 
       const data = await response.json();
@@ -59,10 +59,16 @@ const Login = () => {
             'url("https://i.pinimg.com/474x/51/26/94/512694f26b255cb3f89574831bde2a41.jpg")',
         }}
       >
-        <div className="mr-20 p-8 max-w-md w-full">
+        <div className="mr-20 p-8 max-w-md w-full bg-white shadow-lg rounded-lg">
           <h3 className="text-center text-lg font-semibold mb-4">
             <div className="text-2xl font-bold">TicketBridge</div>
-            Don't have an Account? Sign Up
+            <p className="mt-2">Don't have an Account?</p>
+            <p
+              className="text-blue-500 cursor-pointer"
+              onClick={() => navigate("/register")}
+            >
+              Sign Up
+            </p>
           </h3>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
