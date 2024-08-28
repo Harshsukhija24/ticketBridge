@@ -6,10 +6,10 @@ from datetime import timedelta
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
-#SECRET_KEY = 'django-insecure-#zprxpp&b_5*-i!chqn*$)72=y$*8jrb^j+v@7d$o%c4*56-q0'
+SECRET_KEY = 'django-insecure-#zprxpp&b_5*-i!chqn*$)72=y$*8jrb^j+v@7d$o%c4*56-q0'
 DEBUG = True
 # api/settings.py
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app','localhost','.now.sh']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app','localhost']
 
 
 AWS_ACCESS_KEY_ID = 'your-access-key-id'
