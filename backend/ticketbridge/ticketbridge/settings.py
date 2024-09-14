@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#zprxpp&b_5*-i!chqn*$)72=y$*8jrb^j+v@7d$o%c4*56-q0'
 DEBUG = False
 # api/settings.py
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app','localhost']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app','localhost','*']
 
 
 AWS_ACCESS_KEY_ID = 'your-access-key-id'
