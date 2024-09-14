@@ -3,13 +3,36 @@ from .models import Event ,Support,Request
 # Register your models here.
 
 
-
 @admin.register(Event)
-
 class EventAdmin(admin.ModelAdmin):
-        fields=('Eventname','Date','Location','performer','TicketPrice','EventTime','ContactInfo','image')
-        list_display=('id','Eventname','Date','Location','performer','TicketPrice','EventTime','ContactInfo','image')
-    
+    fields = (
+        'Eventname',
+        'Date',
+        'Location',
+        'performer',
+        'AdultTicketPrice',
+        'ChildTicketPrice',
+        'FamilyTicketPrice',
+        'EventTime',  # Corrected string
+        'ContactInfo',
+        'description',
+        'image'
+    )
+    list_display = (
+        'id',
+        'Eventname',
+        'Date',
+        'Location',
+        'performer',
+        'AdultTicketPrice',
+        'ChildTicketPrice',
+        'FamilyTicketPrice',
+        'EventTime',  # Corrected string
+        'ContactInfo',
+        'description',
+
+        'image'
+    )
 
 @admin.register(Support)
 

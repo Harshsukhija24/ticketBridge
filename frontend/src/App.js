@@ -17,6 +17,7 @@ import Music from "./Industry/Music";
 import Price from "./Price";
 import ExploreFilteredEvents from "./ExploreEvent/Result";
 import CreateEvent from "./ExploreEvent/CreateEvent";
+import Book from "./bookTicket/book";
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
         <Route path="/Food" element={<Food />} />
         <Route path="/Sports" element={<Sports />} />
         <Route path="/Music" element={<Music />} />
+        <Route path="/Book/:id" element={<Book />} />
         <Route path="/Price" element={<Price />} />
       </Routes>
     </div>

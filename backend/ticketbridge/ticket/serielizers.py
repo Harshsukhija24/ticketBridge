@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ('id', 'Eventname', 'Date', 'Location', 'performer', 'TicketPrice', 'EventTime', 'ContactInfo', 'image')
+        fields = ('id', 'Eventname', 'Date', 'Location', 'performer', 'AdultTicketPrice','ChildTicketPrice','FamilyTicketPrice', 'EventTime', 'ContactInfo','description', 'image')
 
  
 class SupportSerailizer(serializers.ModelSerializer):

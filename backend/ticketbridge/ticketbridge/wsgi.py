@@ -7,3 +7,5 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ticketbridge.settings')
 
 application = get_wsgi_application()
 app=application
+
+# api/wsgi.py

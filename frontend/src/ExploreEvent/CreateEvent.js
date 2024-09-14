@@ -8,7 +8,9 @@ const CreateEvent = () => {
     Date: "",
     Location: "",
     performer: "",
-    TicketPrice: "",
+    AdultTicketPrice: "",
+    ChildTicketPrice: "",
+    FamilyTicketPrice: "",
     EventTime: "",
     ContactInfo: "",
     description: "",
@@ -32,9 +34,12 @@ const CreateEvent = () => {
       "Date",
       "Location",
       "performer",
-      "TicketPrice",
+      "AdultTicketPrice",
+      "ChildTicketPrice",
+      "FamilyTicketPrice",
       "EventTime",
       "ContactInfo",
+      "description",
     ];
 
     for (const field of requiredFields) {
@@ -49,7 +54,9 @@ const CreateEvent = () => {
     formDataToSend.append("Date", formData.Date);
     formDataToSend.append("Location", formData.Location);
     formDataToSend.append("performer", formData.performer);
-    formDataToSend.append("TicketPrice", formData.TicketPrice);
+    formDataToSend.append("AdultTicketPrice", formData.AdultTicketPrice);
+    formDataToSend.append("ChildTicketPrice", formData.ChildTicketPrice);
+    formDataToSend.append("FamilyTicketPrice", formData.FamilyTicketPrice);
     formDataToSend.append("EventTime", formData.EventTime);
     formDataToSend.append("ContactInfo", formData.ContactInfo);
     formDataToSend.append("description", formData.description);
@@ -95,6 +102,13 @@ const CreateEvent = () => {
             className="bg-white p-6 rounded-lg shadow-md"
           >
             <h2 className="text-xl font-bold mb-4">Create Event</h2>
+
+            <label
+              htmlFor="Eventname"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Event Name
+            </label>
             <input
               type="text"
               id="Eventname"
@@ -102,12 +116,26 @@ const CreateEvent = () => {
               placeholder="Event Name"
               className="border border-gray-300 rounded-md p-2 mb-4 w-full"
             />
+
+            <label
+              htmlFor="Date"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Date
+            </label>
             <input
               type="date"
               id="Date"
               onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 mb-4 w-full"
             />
+
+            <label
+              htmlFor="Location"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Location
+            </label>
             <input
               type="text"
               id="Location"
@@ -115,6 +143,13 @@ const CreateEvent = () => {
               placeholder="Location"
               className="border border-gray-300 rounded-md p-2 mb-4 w-full"
             />
+
+            <label
+              htmlFor="performer"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Performer
+            </label>
             <input
               type="text"
               id="performer"
@@ -122,19 +157,68 @@ const CreateEvent = () => {
               placeholder="Performer"
               className="border border-gray-300 rounded-md p-2 mb-4 w-full"
             />
+
+            <label
+              htmlFor="AdultTicketPrice"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Adult Ticket Price
+            </label>
             <input
               type="number"
-              id="TicketPrice"
+              id="AdultTicketPrice"
               onChange={handleChange}
-              placeholder="Ticket Price"
+              placeholder="Adult Ticket Price"
               className="border border-gray-300 rounded-md p-2 mb-4 w-full"
             />
+
+            <label
+              htmlFor="ChildTicketPrice"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Child Ticket Price
+            </label>
+            <input
+              type="number"
+              id="ChildTicketPrice"
+              onChange={handleChange}
+              placeholder="Child Ticket Price"
+              className="border border-gray-300 rounded-md p-2 mb-4 w-full"
+            />
+
+            <label
+              htmlFor="FamilyTicketPrice"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Family Ticket Price
+            </label>
+            <input
+              type="number"
+              id="FamilyTicketPrice"
+              onChange={handleChange}
+              placeholder="Family Ticket Price"
+              className="border border-gray-300 rounded-md p-2 mb-4 w-full"
+            />
+
+            <label
+              htmlFor="EventTime"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Event Time
+            </label>
             <input
               type="time"
               id="EventTime"
               onChange={handleChange}
               className="border border-gray-300 rounded-md p-2 mb-4 w-full"
             />
+
+            <label
+              htmlFor="ContactInfo"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Contact Info
+            </label>
             <input
               type="text"
               id="ContactInfo"
@@ -142,18 +226,33 @@ const CreateEvent = () => {
               placeholder="Contact Info"
               className="border border-gray-300 rounded-md p-2 mb-4 w-full"
             />
+
+            <label
+              htmlFor="description"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Description
+            </label>
             <textarea
               id="description"
               onChange={handleChange}
               placeholder="Description"
               className="border border-gray-300 rounded-md p-2 mb-4 w-full"
             ></textarea>
+
+            <label
+              htmlFor="image"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Upload Event Image
+            </label>
             <input
               type="file"
               id="image"
               onChange={handleChange}
               className="border border-gray-300 rounded-md mb-4 w-full"
             />
+
             <button
               type="submit"
               className="bg-blue-500 text-white rounded-md p-2 w-full hover:bg-blue-600"

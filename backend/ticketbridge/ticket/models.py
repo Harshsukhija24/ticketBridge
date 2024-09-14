@@ -7,9 +7,13 @@ class Event(models.Model):
     Date = models.DateField()
     Location = models.CharField(max_length=100)
     performer = models.CharField(max_length=50)
-    TicketPrice = models.DecimalField(max_digits=10, decimal_places=2)
+    AdultTicketPrice = models.DecimalField(max_digits=10, decimal_places=2)
+    ChildTicketPrice = models.DecimalField(max_digits=10, decimal_places=2)
+    FamilyTicketPrice = models.DecimalField(max_digits=10, decimal_places=2)
     EventTime = models.TimeField()
     ContactInfo = models.CharField(max_length=100)
+    description = models.CharField(max_length=50000)
+
     image = models.ImageField(upload_to='eventimage/', blank=True, null=True)
 
     class Meta:

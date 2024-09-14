@@ -15,6 +15,7 @@ urlpatterns = [
     path('login/', UserLoginView.as_view(), name='user-login'),
     path('', include(router.urls)), 
     path('session-data/', views.session_data_view, name='session_data'),
+    path('jwt-login/', UserLoginView.as_view(), name='jwt-login'),
     path('logout/', LogoutView.as_view(), name='logout'),
 
 ]

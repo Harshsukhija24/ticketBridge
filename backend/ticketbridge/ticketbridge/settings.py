@@ -2,12 +2,16 @@ from pathlib import Path
 import os
 from datetime import timedelta
 
+
+LOGIN_URL = '/Ticket/login/'
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 SECRET_KEY = 'django-insecure-#zprxpp&b_5*-i!chqn*$)72=y$*8jrb^j+v@7d$o%c4*56-q0'
-DEBUG = True
+DEBUG = False
 # api/settings.py
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app','localhost']
 
@@ -103,6 +107,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'ticketbridge.wsgi.application'
 
 # Database
@@ -126,9 +131,18 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'eventimage')
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),  # Directory for static files in development
+# settings.py
+
+# Base URL to serve static files
+STATIC_URL = '/static/'
+
+# Directory where static files are collected
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+# Location where static files will be stored after running `collectstatic`
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
